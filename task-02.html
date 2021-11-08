@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Модуль 6.2</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <style>
+      .output {
+        font-size: 24px;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        height: 300px;
+        background-color: #3f51b5;
+        transition: background-color 200ms ease-in;
+      }
+
+      .box--active {
+        background-color: #009688;
+      }
+
+      .inner-box {
+        width: 100px;
+        height: 100px;
+        background-color: #ffc107;
+      }
+
+      /* модальное окно */
+      body.show-modal .backdrop {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: initial;
+      }
+
+      body.show-modal .modal {
+        transform: scale(1);
+      }
+
+      .backdrop {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 999;
+
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+      }
+
+      .modal {
+        padding: 24px;
+        border-radius: 4px;
+        max-width: 640px;
+        width: 100%;
+        min-height: 320px;
+        background-color: #fff;
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+          0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+          0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+        transform: scale(1.1);
+        transition: transform 200ms ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <p><a href="index.html">Go back</a></p>
+
+    <h1>Модуль 6.2 (.addEventListener, 'click')</h1>
+    <h2>1. Слушатель события (.addEventListener/.removeEventListener)</h2>
+
+    <button type="button" class="js-target-btn">Целевая кнопка</button>
+    <button type="button" class="js-add-listener">Добавить слушатель</button>
+    <button type="button" class="js-remove-listener">Снять слушатель</button>
+
+    <h2>
+      2. Формы. Событие сабмита (получаем значения инпут, пароля, радиобаттон)
+    </h2>
+    <!-- Событие сабмита формы -->
+    <form class="js-register-form" autocomplete="off">
+      <div role="group">
+        <label>
+          Почта
+          <input type="email" name="email" />
+        </label>
+        <label>
+          Пароль
+          <input name="password" type="password" />
+        </label>
+      </div>
+
+      <br />
+      <div role="group">
+        <b>Тип подписки:</b>
+        <label>
+          <input type="radio" name="subscription" value="free" />
+          Free
+        </label>
+        <label>
+          <input type="radio" name="subscription" value="basic" />
+          Basic
+        </label>
+        <label>
+          <input type="radio" name="subscription" value="pro" />
+          Pro
+        </label>
+      </div>
+
+      <br />
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <h2>
+      3. Событие input, focus, blur, change (и value, checked), свойство кнопки
+      disabled (отключено). Задачка
+    </h2>
+    <!-- <form action="" autocomplete="off"> -->
+    <label
+      >Имя
+      <input type="text" class="js-input" />
+    </label>
+
+    <p>
+      <label>
+        <input type="checkbox" class="js-license" />
+        Принимаю лицензинное соглашение
+      </label>
+    </p>
+
+    <!--при атрибуте disabled кнопка будет отключена -->
+    <button type="submit" disabled class="js-button">
+      Зарегистрироваться как <span>Аноним</span>
+    </button>
+    <!-- </form> -->
+
+    <h2>
+      4. Событие клавиатуры (keypress, keydown, keyup), свойство code, key.
+      Задачка (очищаем, то что написали)
+    </h2>
+    <p>
+      (keypress(только текст), keydown, keyup), свойство code (наименованиеб
+      физическая клавиша), key (букву какую ввелиб на любом языке)
+    </p>
+    <button class="js-clear">Очистить</button>
+    <p class="output js-output"></p>
+
+    <h2>
+      5. Событие мышки (mouseenter и mouseleave (это ховер)), mouseover и
+      mouseout. Mousemove - болтливое событие
+    </h2>
+    <p>Ховер через js.</p>
+    <div class="box js-box">
+      <div class="inner-box"></div>
+    </div>
+
+    <h2>6. Модальное окно</h2>
+
+    <button class="button" data-action="open-modal">Открыть модалку</button>
+
+    <div class="backdrop js-backdrop">
+      <div class="modal">
+        <h2>Modal window</h2>
+        <p>
+          In user interface design for computer applications, a modal window is
+          a graphical control element subordinate to an application's main
+          window. It creates a mode that disables the main window but keeps it
+          visible, with the modal window as a child window in front of it. Users
+          must interact with the modal window before they can return to the
+          parent application. This avoids interrupting the workflow on the main
+          window. Modal windows are sometimes called heavy windows or modal
+          dialogs because they often display a dialog box.
+        </p>
+        <button type="button" class="button" data-action="close-modal">
+          Закрыть
+        </button>
+      </div>
+    </div>
+
+    <script src="js/task-02.js" type="module"></script>
+  </body>
+</html>

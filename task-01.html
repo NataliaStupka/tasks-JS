@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Модуль 6.1</title>
+    <link rel="stylesheet" href="css/common.css" />
+  </head>
+  <body>
+    <p><a href="index.html">Go back</a></p>
+
+    <h1>Модуль 6.1</h1>
+    <h2 class="title__element">1. Поиск элемента "querySelector"</h2>
+    <ul class="site-nav">
+      <li class="site-nav__item">
+        <a href="/about" class="site-nav__link">О нас</a>
+      </li>
+      <li class="site-nav__item">
+        <a href="/portfolio" class="site-nav__link">Портфолио</a>
+      </li>
+      <li class="site-nav__item">
+        <a href="/contact" class="site-nav__link">Контакты</a>
+      </li>
+    </ul>
+
+    <h2>2. Свойства элемента</h2>
+    <button type="button" class="magic-btn js-magic-btn">
+      Сделать магию
+      <span class="icon">🧙‍♂️</span>
+    </button>
+
+    <section class="hero">
+      <h3 class="hero__title">Всё про меня</h3>
+      <img
+        class="hero__image"
+        src="https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=480"
+        alt="It's me"
+        width="320"
+      />
+    </section>
+
+    <hr />
+
+    <input type="text" class="js-input" />
+
+    <div class="actions js-actions">
+      <button type="button" data-action="add">Создать</button>
+      <button type="button" data-action="remove">Удалить</button>
+      <button type="button" data-action="edit" data-x="y">Редактировать</button>
+    </div>
+
+    <div class="color-picker js-color-picker"></div>
+
+    <script src="js/task-01.js" type="module"></script>
+  </body>
+</html>
