@@ -10,7 +10,30 @@
   <body>
     <p><a href="index.html">Go back</a></p>
 
-    <h1>Модуль 8.2</h1>
+    <h1>Модуль 8.2 (Цыкл while; метод (reduce), obj, .split, .filter)</h1>
+    <p>Цыкл while</p>
+    <p>
+      let clientCounter = 18; <br />
+      maxClients = 25; <br />
+      while (clientCounter < maxClients) { <br />
+      console.log(clientCounter); <br />
+      clientCounter += 1; }
+    </p>
+
+    <div>
+      <h2>.bind</h2>
+      <h3>привязать контекст с помощью bind</h3>
+      <pconst dog = { name: 'Poly' };<br>
+
+function showDogName() { <br>
+  console.log(this.name); <br>
+} <br>
+
+const boundShowDogName = showDogName.bind(dog); -функцию showDogName привязываем к обьекту dog <br>
+
+boundShowDogName(); <br>
+на выходе получаем Poly</p>
+    </div>
     <script src="js/task-06.js" type="module"></script>
   </body>
 </html>
